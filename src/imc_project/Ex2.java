@@ -44,13 +44,6 @@ public class Ex2 extends JFrame {
        //declaração das variáveis
     //Vetor de caracteres (String) de 2 colunas
 
-    
-    /*
-        
-        LEGAL, FORK PARA COMMIT, Rodrigo Soldi - 41344391
-    
-    */
-    
     private String sexo[] = {"Mulher", "Homem"};
     //inteiros (int)
     int tipo, foto;
