@@ -43,10 +43,12 @@ public class Ex2Test {
     {    
         
         double imc = 18.4;
-        assertEquals("Message is not equal", "Você está abaixo do peso recomendado", eng.geraMensagem(imc));
+        String result = String.format("Você está abaixo do peso recomendado. IMC %.2f", imc);
+        assertEquals("Message is not equal", result, eng.geraMensagem(imc));
         
         imc = 10.0;
-        assertEquals("Message is not equal", "Você está abaixo do peso recomendado", eng.geraMensagem(imc));
+        result = String.format("Você está abaixo do peso recomendado. IMC %.2f", imc);
+        assertEquals("Message is not equal", result, eng.geraMensagem(imc));
     }
     
     @Test
@@ -54,13 +56,16 @@ public class Ex2Test {
     {    
         
         double imc = 18.6;
-        assertEquals("Message is not equal", "Você está muito bem! Continue assim!", eng.geraMensagem(imc));
+        String result = String.format("Você está muito bem! Continue assim! IMC %.2f", imc);
+        assertEquals("Message is not equal", result, eng.geraMensagem(imc));
         
         imc = 24.9;
-        assertEquals("Message is not equal", "Você está muito bem! Continue assim!", eng.geraMensagem(imc));
+        result = String.format("Você está muito bem! Continue assim! IMC %.2f", imc);
+        assertEquals("Message is not equal", result, eng.geraMensagem(imc));
         
         imc = 21.0;
-        assertEquals("Message is not equal", "Você está muito bem! Continue assim!", eng.geraMensagem(imc));
+        result = String.format("Você está muito bem! Continue assim! IMC %.2f", imc);
+        assertEquals("Message is not equal", result, eng.geraMensagem(imc));
     }
     
     @Test
@@ -68,13 +73,16 @@ public class Ex2Test {
     {    
         
         double imc = 25;
-        assertEquals("Message is not equal", "Você está acima do peso recomendado. Cuidado!", eng.geraMensagem(imc));
+        String result = String.format("Você está acima do peso recomendado. Cuidado! IMC %.2f", imc);
+        assertEquals("Message is not equal", result, eng.geraMensagem(imc));
         
         imc = 29.9;
-        assertEquals("Message is not equal", "Você está acima do peso recomendado. Cuidado!", eng.geraMensagem(imc));
+        result = String.format("Você está acima do peso recomendado. Cuidado! IMC %.2f", imc);
+        assertEquals("Message is not equal", result, eng.geraMensagem(imc));
         
         imc = 27.5;
-        assertEquals("Message is not equal", "Você está acima do peso recomendado. Cuidado!", eng.geraMensagem(imc));
+        result = String.format("Você está acima do peso recomendado. Cuidado! IMC %.2f", imc);
+        assertEquals("Message is not equal", result, eng.geraMensagem(imc));
     }
     
     @Test
@@ -82,9 +90,11 @@ public class Ex2Test {
     {    
         
         double imc = 30.0;
-        assertEquals("Message is not equal", "Você está Obeso. Procure o acompanhamento de um nutricionista e realizar mais atividades físicas!", eng.geraMensagem(imc));
+        String result = String.format("Você está Obeso. Procure o acompanhamento de um nutricionista e realizar mais atividades físicas! IMC %.2f", imc);
+        assertEquals("Message is not equal", result, eng.geraMensagem(imc));
         
         imc = 40;
-        assertEquals("Message is not equal", "Você está Obeso. Procure o acompanhamento de um nutricionista e realizar mais atividades físicas!", eng.geraMensagem(imc));
+        result = String.format("Você está Obeso. Procure o acompanhamento de um nutricionista e realizar mais atividades físicas! IMC %.2f", imc);
+        assertEquals("Message is not equal", result, eng.geraMensagem(imc));
     }
 }

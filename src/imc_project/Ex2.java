@@ -48,11 +48,11 @@ public class Ex2 extends JFrame {
     //inteiros (int)
     int tipo, foto;
     //numeros de pontos flutuantes (double)
-    double altura, peso, massa;
+    double altura, peso, imc;
     //criando um array já com os valores configurados do tipo double
     double imc_homens[] = {18.5, 24.9};
     double imc_mulheres[] = {18.5, 24.9};
-    private String string = "";
+    private String result = "";
 
     //criação do FlowLayout que alinha componentes da esquerda para a direita.
     private FlowLayout flowLayout = new FlowLayout();
@@ -159,32 +159,32 @@ public class Ex2 extends JFrame {
             //da mesma forma com Fpeso para a variável peso
             peso = Double.parseDouble(Fpeso.getText());
             //realiza calculos
-            massa = peso / (altura * altura);
+            imc = this.calculoIMC(peso, altura);
             /*Se a massa corporal for menor do que o estabelecido pelo vetor configure a variável
              string com essa frase*/
             if (tipo == 0) {
-                if (imc_mulheres[0] > massa) {
-                    string = String.format("CUIDADO!!!Voce estar abaixo do peso! IMC %.2f", massa);
+                if (imc_mulheres[0] > imc) {
+                    result = String.format("CUIDADO!!!Voce estar abaixo do peso! IMC %.2f", imc);
                     foto = 0;
-                } else if ((imc_mulheres[0] < massa) && (massa <= imc_mulheres[1])) {
-                    string = String.format("PARABENS!!Voce estar com o peso ideal! IMC %.2f", massa);
+                } else if ((imc_mulheres[0] < imc) && (imc <= imc_mulheres[1])) {
+                    result = String.format("PARABENS!!Voce estar com o peso ideal! IMC %.2f", imc);
                     foto = 1;
                 } else {
-                    string = String.format("CUIDADO!!Voce estar obesa! IMC %.2f", massa);
+                    result = String.format("CUIDADO!!Voce estar obesa! IMC %.2f", imc);
                     foto = 2;
                 }
                 //configure a foto conforme a posição da variável foto
                 Lfoto.setIcon(imagemM[foto]);
             } else if (tipo == 1) {
-                if (imc_homens[0] > massa) {
-                    string = String.format("CUIDADO!!!Voce estar abaixo do peso! IMC %.2f", massa);
+                if (imc_homens[0] > imc) {
+                    result = String.format("CUIDADO!!!Voce estar abaixo do peso! IMC %.2f", imc);
                     //configura a posição que será exibido a imagem
                     foto = 0;
-                } else if ((imc_homens[0] < massa) && (massa < imc_homens[1])) {
-                    string = String.format("PARABENS!!Voce estar com o peso ideal! IMC %.2f", massa);
+                } else if ((imc_homens[0] < imc) && (imc < imc_homens[1])) {
+                    result = String.format("PARABENS!!Voce estar com o peso ideal! IMC %.2f", imc);
                     foto = 1;
                 } else {
-                    string = String.format("CUIDADO!!Voce estar obeso! IMC %.2f", massa);
+                    result = String.format("CUIDADO!!Voce estar obeso! IMC %.2f", imc);
                     foto = 2;
                 }
                 //configure a foto conforme a posição da variável foto
@@ -193,7 +193,7 @@ public class Ex2 extends JFrame {
             //reconfigure o tamanho da tela
             setSize(370, 500);
             //configure a label Lresultado com a variável string
-            Lresultado.setText(string);
+            Lresultado.setText(result);
         } //caso ocorra uma excessão(erro) exiba uma mensagem nua caixa de mensagem
         catch (NumberFormatException exception) {
             JOptionPane.showMessageDialog(this, "No número inválido!\nEx: Use '.' ao invés de ',' para separar as casas decimais.", "ERROR FATAL!!!", JOptionPane.ERROR_MESSAGE);
@@ -226,13 +226,13 @@ public class Ex2 extends JFrame {
         String mensagem = "";
         
         if(imc < 18.5 && imc > 0){
-            mensagem = "Você está abaixo do peso recomendado";
+            mensagem = String.format("Você está abaixo do peso recomendado. IMC %.2f", imc);
         }else if(imc >= 18.5 && imc < 25 ){
-            mensagem = "Você está muito bem! Continue assim!";
+            mensagem = String.format("Você está muito bem! Continue assim! IMC %.2f", imc);
         }else if(imc >= 25 && imc < 30){
-            mensagem = "Você está acima do peso recomendado. Cuidado!";
+            mensagem = String.format("Você está acima do peso recomendado. Cuidado! IMC %.2f", imc);
         }else if(imc >= 30){
-            mensagem = "Você está Obeso. Procure o acompanhamento de um nutricionista e realizar mais atividades físicas!";
+            mensagem = String.format("Você está Obeso. Procure o acompanhamento de um nutricionista e realizar mais atividades físicas! IMC %.2f", imc);
         }
         return mensagem;
     }
