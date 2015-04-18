@@ -50,8 +50,8 @@ public class Ex2 extends JFrame {
     //numeros de pontos flutuantes (double)
     double altura, peso, massa;
     //criando um array já com os valores configurados do tipo double
-    double imc_homens[] = {20.7, 26.4};
-    double imc_mulheres[] = {19.1, 25.8};
+    double imc_homens[] = {18.5, 24.9};
+    double imc_mulheres[] = {18.5, 24.9};
     private String string = "";
 
     //criação do FlowLayout que alinha componentes da esquerda para a direita.
@@ -214,5 +214,26 @@ public class Ex2 extends JFrame {
         //substitua a imagem atual por essa
         Lfoto.setIcon(limpar);
         setSize(300, 160);
+    }
+    
+    public double calculoIMC(double peso, double altura)
+    {
+        return peso / (altura * altura);
+    }
+    
+    public String geraMensagem(double imc)
+    {
+        String mensagem = "";
+        
+        if(imc < 18.5 && imc > 0){
+            mensagem = "Você está abaixo do peso recomendado";
+        }else if(imc >= 18.5 && imc < 25 ){
+            mensagem = "Você está muito bem! Continue assim!";
+        }else if(imc >= 25 && imc < 30){
+            mensagem = "Você está acima do peso recomendado. Cuidado!";
+        }else if(imc >= 30){
+            mensagem = "Você está Obeso. Procure o acompanhamento de um nutricionista e realizar mais atividades físicas!";
+        }
+        return mensagem;
     }
 }//Fim da classe Ex2
