@@ -158,38 +158,36 @@ public class Ex2 extends JFrame {
             altura /= 100;
             //da mesma forma com Fpeso para a variável peso
             peso = Double.parseDouble(Fpeso.getText());
-            //realiza calculos
+            
+
+
+
+            //realiza calculos COM NOSSO METODO
             imc = this.calculoIMC(peso, altura);
             /*Se a massa corporal for menor do que o estabelecido pelo vetor configure a variável
              string com essa frase*/
-            if (tipo == 0) {
-                if (imc_mulheres[0] > imc) {
-                    result = String.format("CUIDADO!!!Voce estar abaixo do peso! IMC %.2f", imc);
-                    foto = 0;
-                } else if ((imc_mulheres[0] < imc) && (imc <= imc_mulheres[1])) {
-                    result = String.format("PARABENS!!Voce estar com o peso ideal! IMC %.2f", imc);
-                    foto = 1;
-                } else {
-                    result = String.format("CUIDADO!!Voce estar obesa! IMC %.2f", imc);
-                    foto = 2;
-                }
+            
+           
+            
+            //REFATORADO
+            result = this.geraMensagem(imc);
+            if (result.contains("Você está abaixo do peso")) {
+                foto = 0;
+            } else if (result.contains("Você está muito bem!")) {
+                foto = 1;
+            } else {
+                foto = 2;
+            }
+            if(tipo == 0){
                 //configure a foto conforme a posição da variável foto
                 Lfoto.setIcon(imagemM[foto]);
-            } else if (tipo == 1) {
-                if (imc_homens[0] > imc) {
-                    result = String.format("CUIDADO!!!Voce estar abaixo do peso! IMC %.2f", imc);
-                    //configura a posição que será exibido a imagem
-                    foto = 0;
-                } else if ((imc_homens[0] < imc) && (imc < imc_homens[1])) {
-                    result = String.format("PARABENS!!Voce estar com o peso ideal! IMC %.2f", imc);
-                    foto = 1;
-                } else {
-                    result = String.format("CUIDADO!!Voce estar obeso! IMC %.2f", imc);
-                    foto = 2;
-                }
-                //configure a foto conforme a posição da variável foto
+            }else{
                 Lfoto.setIcon(imagemH[foto]);
             }
+            
+            
+            
+            
             //reconfigure o tamanho da tela
             setSize(370, 500);
             //configure a label Lresultado com a variável string
@@ -230,9 +228,9 @@ public class Ex2 extends JFrame {
         }else if(imc >= 18.5 && imc < 25 ){
             mensagem = String.format("Você está muito bem! Continue assim! IMC %.2f", imc);
         }else if(imc >= 25 && imc < 30){
-            mensagem = String.format("Você está acima do peso recomendado. Cuidado! IMC %.2f", imc);
+            mensagem = String.format("Você está acima do peso recomendado.\nCuidado! IMC %.2f", imc);
         }else if(imc >= 30){
-            mensagem = String.format("Você está Obeso. Procure o acompanhamento de um nutricionista e realizar mais atividades físicas! IMC %.2f", imc);
+            mensagem = String.format("Você está Obeso. Procure o acompanhamento de um nutricionista e\nrealizar mais atividades físicas! IMC %.2f", imc);
         }
         return mensagem;
     }
